@@ -4,10 +4,6 @@
 <head>
     <meta charset="UTF-8" />
     <title>React</title>
-    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
-
 </head>
 
 <body>
@@ -17,49 +13,26 @@
         let dom = document.querySelector('#root');
         
         
-        const table = {
-            fontSize: "16pt",
-            padding: "5px 50px",
-        }
-        const th = {
-            color:'white',
-            backgroundColor:'#006',
-            padding:'5px 15px',
-        }
-        const td = {
-            color:'black',
-            padding:'5px 15px',
-            border:'1px solid gray',
-        }
+        const p = {
+            fontSize: "20pt",
+            padding: "10px",
+        };
         
         
-        let data = [
-            {name:'Taro', mail:'taro@yamada', age:45},
-            {name:'Hanako', mail:'hanako@flower', age:37},
-            {name:'Sachiko', mail:'sachiko@happy', age:29}
-        ];
+        var counter = 0;
         
         
-        let el = (
-            <div>
-                <table style={table}>
-                <tr>
-                    <th style={th}>name</th>
-                    <th style={th}>mail</th>
-                    <th style={th}>age</th>
-                </tr>
-                {data.map((value) =>(
-                <tr>
-                    <td style={td}>{value.name}</td>
-                    <td style={td}>{value.mail}</td>
-                    <td style={td}>{value.age}</td>
-                </tr>
-                ))}
-                </table>
-            </div>
-        );
+        setInterval(() => {
+            counter++;
+            let el = (
+                <div>
+                    <p style={p}>count: {counter}</p>
+                </div>
+            );
+            ReactDOM.render(el, dom);
+        }, 1000);
         
-        ReactDOM.render(el, dom);
+        
         </script>
         
 </body>
