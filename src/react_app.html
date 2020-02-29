@@ -4,37 +4,48 @@
 <head>
     <meta charset="UTF-8" />
     <title>React</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
 </head>
+
 
 <body>
     <h1>React</h1>
     <div id="root">wait...</div>
     <script type="text/babel">
         let dom = document.querySelector('#root');
-        
-        
-        const p = {
+
+
+        const msg1 = {
             fontSize: "20pt",
             padding: "10px",
+            border: "double 5px magenta"
         };
-        
-        
-        var counter = 0;
-        
-        
-        setInterval(() => {
-            counter++;
-            let el = (
-                <div>
-                    <p style={p}>count: {counter}</p>
-                </div>
-            );
-            ReactDOM.render(el, dom);
-        }, 1000);
-        
-        
-        </script>
-        
+        const msg2 = {
+            fontSize: "16pt",
+            fontWeight: "bold",
+            padding: "10px",
+            backgroundColor: "cyan"
+        };
+
+
+        // これが関数コンポーネント
+        function Welcome(props) {
+            return <p style={props.style}>Hello ,{props.name}</p>;
+        }
+
+
+        // 表示するJSX
+        let el = (
+            <div>
+                <Welcome name = "Taro" style={msg1}/>
+                <Welcome name = "Hanako" style={msg2}/>
+            </div>
+        );
+        ReactDOM.render(el, dom);
+    </script>
 </body>
+
 
 </html>
