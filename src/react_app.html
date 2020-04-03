@@ -4,37 +4,64 @@
 <head>
     <meta charset="UTF-8" />
     <title>React</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
 </head>
+
 
 <body>
     <h1>React</h1>
     <div id="root">wait...</div>
     <script type="text/babel">
         let dom = document.querySelector('#root');
-        
-        
-        const p = {
-            fontSize: "20pt",
-            padding: "10px",
-        };
-        
-        
-        var counter = 0;
-        
-        
-        setInterval(() => {
-            counter++;
-            let el = (
-                <div>
-                    <p style={p}>count: {counter}</p>
-                </div>
-            );
-            ReactDOM.render(el, dom);
-        }, 1000);
-        
-        
-        </script>
-        
+
+
+        class Rect extends React.Component {
+            x = 0;
+            y = 0;
+            width = 0;
+            height = 0;
+            color = "white";
+            style = {};
+
+
+            constructor(props) {
+                super(props);
+                this.x = props.x;
+                this.y = props.y;
+                this.width = props.w;
+                this.height = props.h;
+                this.color = props.c;
+                this.style = {
+                    backgroundColor: this.color,
+                    position: "absolute",
+                    left: this.x + "px",
+                    top: this.y + "px",
+                    width: this.width + "px",
+                    height: this.height + "px"
+                }
+            }
+
+
+            render() {
+                return <div style={this.style}></div>;
+            }
+        }
+
+
+        let el = (
+            <div>
+                <Rect x="100" y="100" w="100" h="100" c="cyan" />
+                <Rect x="150" y="150" w="100" h="100" c="magenta" />
+            </div>
+        );
+
+
+        ReactDOM.render(el, dom);
+    </script>
+
 </body>
+
 
 </html>
