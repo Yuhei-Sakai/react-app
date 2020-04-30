@@ -1,18 +1,39 @@
 import React, { Component } from 'react';
-import Rect from './Rect';
+import { connect } from 'react-redux';
 import './App.css';
+import Memo from './memo/Memo';
+import AddForm from './memo/AddForm';
+import FindForm from './memo/FindForm';
+import DelForm from './memo/DelForm';
 
 
+// Appコンポーネント
 class App extends Component {
-  render(){
-    return <div>
-      <h1>React</h1>
-      <Rect x="50" y="50" w="150" h="150" c="#6ff9" r="50" />
-      <Rect x="150" y="100" w="150" h="150" c="#f6f9" r="75" />
-      <Rect x="100" y="150" w="150" h="150" c="#6669" r="60" />
-    </div>;
+  td = {
+    width:"250px"
+  }
+
+
+  constructor(props){
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Memo</h1>
+        <AddForm />
+        <hr />
+        <table><tbody><tr>
+          <td style={this.td}><FindForm /></td>
+          <td style={this.td}><DelForm /></td>
+        </tr></tbody></table>
+        <Memo />
+      </div>
+    );
   }
 }
 
 
-export default App;
+export default connect()(App);
+

@@ -35,7 +35,6 @@ class Rect extends Component {
   }
 }
 
-
 export default Rect;
 
 
